@@ -2,80 +2,1012 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>AURA Restaurant</title>
+    <meta
+      name="description"
+      content="AURA Restaurant — Fresh food, delicious flavors and an unforgettable dining experience in Tanta, Egypt."
+    />
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-      }
+    <meta name="author" content="Yhaya Bar" />
 
-      body {
-        height: 100vh;
+    <title>AURA Restaurant | Tanta</title>
 
-        background: url(./ChatGPT\ Image\ Aug\ 8\,\ 2026\,\ 08_13_59\ PM.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    <!-- =================================================
+         GOOGLE FONTS
+         ================================================= -->
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-      /* Menu Button */
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-      .menu {
-        position: absolute;
-        bottom: 8%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-      .menu a {
-        display: inline-block;
-        text-decoration: none;
-        color: black;
-        background: rgb(56, 152, 193);
-        padding: 18px 55px;
-        font-size: clamp(18px, 2vw, 26px);
-        font-weight: bold;
-        border-radius: 35px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-        transition: 0.3s;
-      }
+    <!-- =================================================
+         BOOTSTRAP
+         ================================================= -->
 
-      .menu a:hover {
-        background: white;
-        color: black;
-        transform: translateY(-6px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      }
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
 
-      /* Mobile */
+    <!-- =================================================
+         REMIX ICONS
+         ================================================= -->
 
-      @media (max-width: 600px) {
-        .menu {
-          bottom: 30px;
-        }
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+    />
 
-        .menu a {
-          width: 230px;
-          text-align: center;
-          padding: 15px 20px;
-          font-size: 18px;
-        }
-      }
-    </style>
+    <!-- =================================================
+         LEAFLET MAP
+         ================================================= -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- =================================================
+         CUSTOM CSS
+         ================================================= -->
+
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <div class="menu">
-      <a href="main.html">🍽 To the Menu</a>
-    </div>
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark aura-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand aura-brand" href="#home">
+          <span class="brand-icon">🍽️</span>
+
+          <span>AURA</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#home"> Home </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#top-dishes"> Top Dishes </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#pizza"> Pizza </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#pasta"> Pasta </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#burgers"> Burgers </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#drinks"> Drinks </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#desserts"> Desserts </a>
+            </li>
+
+            <li class="nav-item">
+              <button class="btn btn-info nav-cart-btn" type="button">
+                <i class="ri-shopping-bag-3-line"></i>
+
+                Cart
+
+                <span id="cart-count" class="cart-count"> 0 </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <header id="home" class="hero-section">
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content">
+        <span class="hero-eyebrow"> WELCOME TO AURA </span>
+
+        <h1>
+          Taste The
+          <span>Difference.</span>
+        </h1>
+
+        <p>
+          Fresh ingredients, unforgettable flavors and a dining experience made
+          for you.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#top-dishes" class="btn btn-info hero-btn">
+            Explore Menu
+
+            <i class="ri-arrow-down-line"></i>
+          </a>
+
+          <a href="#location" class="btn hero-outline-btn">
+            <i class="ri-map-pin-line"></i>
+
+            Find Us
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         TOP DISHES
+         ===================================================== -->
+
+    <section id="top-dishes" class="menu-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> OUR FAVORITES </span>
+
+          <h2>Top Dishes</h2>
+
+          <p>Discover some of our most loved dishes.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Steak -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80"
+                  alt="Grilled Steak"
+                  loading="lazy"
+                />
+
+                <span class="food-badge"> Bestseller </span>
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Chef's Choice </span>
+
+                <h4 class="card-title">Grilled Steak</h4>
+
+                <p>Tender grilled steak served with fresh vegetables.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $22.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Chicken Alfredo -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=80"
+                  alt="Chicken Alfredo"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Pasta </span>
+
+                <h4 class="card-title">Chicken Alfredo</h4>
+
+                <p>Creamy Alfredo pasta with perfectly grilled chicken.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $17.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Seafood -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=900&q=80"
+                  alt="Seafood Platter"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Seafood </span>
+
+                <h4 class="card-title">Seafood Platter</h4>
+
+                <p>
+                  A delicious selection of fresh seafood prepared by our chefs.
+                </p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $24.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PIZZA
+         ===================================================== -->
+
+    <section id="pizza" class="menu-section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> FRESH FROM THE OVEN </span>
+
+          <h2>Pizza</h2>
+
+          <p>Crispy crust, rich sauce and delicious toppings.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Margherita -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80"
+                  alt="Pizza Margherita"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Classic </span>
+
+                <h4 class="card-title">Pizza Margherita</h4>
+
+                <p>Tomato sauce, mozzarella and fresh basil.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $12.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pepperoni -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=900&q=80"
+                  alt="Pepperoni Pizza"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Bestseller </span>
+
+                <h4 class="card-title">Pepperoni Pizza</h4>
+
+                <p>Mozzarella, tomato sauce and spicy pepperoni.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $14.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Four Cheese -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=900&q=80"
+                  alt="Four Cheese Pizza"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Premium </span>
+
+                <h4 class="card-title">Four Cheese Pizza</h4>
+
+                <p>A rich blend of four premium cheeses.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $16.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PASTA
+         ===================================================== -->
+
+    <section id="pasta" class="menu-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> ITALIAN FAVORITES </span>
+
+          <h2>Pasta</h2>
+
+          <p>Homemade flavors with a modern AURA touch.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Alfredo -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80"
+                  alt="Creamy Alfredo Pasta"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Creamy </span>
+
+                <h4 class="card-title">Creamy Alfredo</h4>
+
+                <p>Creamy parmesan sauce with fresh pasta.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $15.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Bolognese -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=900&q=80"
+                  alt="Bolognese Pasta"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Classic </span>
+
+                <h4 class="card-title">Bolognese</h4>
+
+                <p>Rich tomato sauce with seasoned minced beef.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $16.49 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Seafood Pasta -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=900&q=80"
+                  alt="Seafood Pasta"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Seafood </span>
+
+                <h4 class="card-title">Seafood Pasta</h4>
+
+                <p>Fresh seafood with creamy tomato sauce.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $19.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         BURGERS
+         ===================================================== -->
+
+    <section id="burgers" class="menu-section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> JUICY & FRESH </span>
+
+          <h2>Burgers</h2>
+
+          <p>Big flavor packed between perfectly toasted buns.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Classic -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+                  alt="Classic Burger"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Classic </span>
+
+                <h4 class="card-title">Classic Burger</h4>
+
+                <p>Beef patty, lettuce, tomato, onion and signature sauce.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $10.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Cheese -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=80"
+                  alt="Cheeseburger"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Bestseller </span>
+
+                <h4 class="card-title">AURA Cheeseburger</h4>
+
+                <p>Juicy beef, melted cheese and our signature sauce.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $12.49 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Chicken Burger -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=900&q=80"
+                  alt="Chicken Burger"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Chicken </span>
+
+                <h4 class="card-title">Crispy Chicken Burger</h4>
+
+                <p>Crispy chicken fillet with lettuce and creamy sauce.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $11.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         DRINKS
+         ===================================================== -->
+
+    <section id="drinks" class="menu-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> REFRESH YOUR DAY </span>
+
+          <h2>Drinks</h2>
+
+          <p>Fresh, cold and perfectly prepared.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Fresh Juice -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=900&q=80"
+                  alt="Fresh Juice"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Fresh </span>
+
+                <h4 class="card-title">Fresh Juice</h4>
+
+                <p>Freshly squeezed seasonal fruit juice.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $4.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Cappuccino -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80"
+                  alt="Cappuccino"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Coffee </span>
+
+                <h4 class="card-title">Cappuccino</h4>
+
+                <p>Smooth espresso with steamed milk foam.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $5.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Iced Coffee -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80"
+                  alt="Iced Coffee"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Cold </span>
+
+                <h4 class="card-title">Iced Coffee</h4>
+
+                <p>Chilled espresso served over fresh ice.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $5.49 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         DESSERTS
+         ===================================================== -->
+
+    <section id="desserts" class="menu-section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> SOMETHING SWEET </span>
+
+          <h2>Desserts</h2>
+
+          <p>Finish your AURA experience with something sweet.</p>
+        </div>
+
+        <div class="row menu-grid">
+          <!-- Cheesecake -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80"
+                  alt="Cheesecake"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Favorite </span>
+
+                <h4 class="card-title">Cheesecake</h4>
+
+                <p>Creamy cheesecake with a delicious fruit topping.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $7.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Chocolate Cake -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+                  alt="Chocolate Cake"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Chocolate </span>
+
+                <h4 class="card-title">Chocolate Cake</h4>
+
+                <p>Rich chocolate cake with smooth chocolate cream.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $8.49 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Tiramisu -->
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <article class="card food-card aura-dish-card">
+              <div class="food-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=80"
+                  alt="Tiramisu"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="card-body food-card-content">
+                <span class="food-category"> Italian </span>
+
+                <h4 class="card-title">Tiramisu</h4>
+
+                <p>Classic Italian tiramisu with coffee and mascarpone.</p>
+
+                <div class="food-bottom">
+                  <strong class="price"> $8.99 </strong>
+
+                  <button type="button" class="btn btn-info">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         LOCATION
+         ===================================================== -->
+
+    <section id="location" class="location-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-eyebrow"> VISIT US </span>
+
+          <h2>📍 Find AURA</h2>
+
+          <p id="location-message">Find AURA Restaurant in Tanta, Egypt.</p>
+        </div>
+
+        <div class="location-card">
+          <div class="location-info">
+            <div class="location-icon">
+              <i class="ri-map-pin-2-fill"></i>
+            </div>
+
+            <div>
+              <h3>AURA Restaurant</h3>
+
+              <p>Tanta, Gharbia Governorate, Egypt</p>
+            </div>
+          </div>
+
+          <div class="map-wrapper">
+            <div id="liveMap" aria-label="AURA Restaurant location map"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CART
+         ===================================================== -->
+
+    <aside
+      id="cart"
+      class="cart-panel"
+      style="display: none"
+      aria-label="Shopping cart"
+    >
+      <div class="cart-header">
+        <div>
+          <span class="cart-eyebrow"> YOUR ORDER </span>
+
+          <h3>Shopping Cart</h3>
+        </div>
+
+        <button type="button" class="cart-close" aria-label="Close cart">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+
+      <div class="cart-body">
+        <ul id="cart-items" class="cart-items"></ul>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span> Total </span>
+
+          <strong> $<span id="total">0.00</span> </strong>
+        </div>
+
+        <button type="button" class="btn btn-success btn-block">
+          <i class="ri-check-line"></i>
+
+          Checkout
+        </button>
+
+        <button type="button" class="btn btn-danger btn-block">
+          <i class="ri-delete-bin-line"></i>
+
+          Clear Cart
+        </button>
+      </div>
+    </aside>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="aura-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <a href="#home" class="footer-brand"> 🍽️ AURA </a>
+
+            <p class="footer-description">
+              Delicious food, fresh ingredients and unforgettable moments.
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h5>Quick Links</h5>
+
+            <ul class="footer-links">
+              <li>
+                <a href="#home"> Home </a>
+              </li>
+
+              <li>
+                <a href="#top-dishes"> Menu </a>
+              </li>
+
+              <li>
+                <a href="#location"> Location </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <h5>Contact</h5>
+
+            <p>
+              <i class="ri-map-pin-line"></i>
+
+              Tanta, Egypt
+            </p>
+
+            <p>
+              <i class="ri-phone-line"></i>
+
+              +20 100 000 0000
+            </p>
+
+            <p>
+              <i class="ri-time-line"></i>
+
+              Open Daily
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span> © 2026 AURA Restaurant. All rights reserved. </span>
+
+          <span class="developer-credit">
+            Made by
+
+            <a
+              href="https://github.com/yahyabar2007"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Yhaya Bar
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =====================================================
+         BACK TO TOP
+         ===================================================== -->
+
+    <button
+      id="backToTop"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+
+    <!-- =====================================================
+         JQUERY
+         ===================================================== -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- =====================================================
+         BOOTSTRAP JS
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- =====================================================
+         LEAFLET JS
+         ===================================================== -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- =====================================================
+         AURA MAIN JS
+         ===================================================== -->
+
+    <script src="main.js"></script>
   </body>
 </html>
