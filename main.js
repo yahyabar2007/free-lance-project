@@ -616,7 +616,7 @@ function setupFooterCredit() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      Yhaya Bar
+      Yahya Bar
     </a>
   `;
 
