@@ -176,6 +176,16 @@ function openCart() {
   // Prevent page scrolling while cart is open
   document.body.classList.add("cart-is-open");
 
+  // Close an expanded mobile menu before showing the cart drawer.
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  if (
+    navbarCollapse &&
+    navbarCollapse.classList.contains("show") &&
+    typeof window.jQuery !== "undefined"
+  ) {
+    window.jQuery(navbarCollapse).collapse("hide");
+  }
+
   // Force browser repaint before animation
   requestAnimationFrame(function () {
     cartBox.classList.add("cart-open");
