@@ -104,6 +104,12 @@ button {
   gap: 4px;
 }
 
+.nav-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 @media (min-width: 992px) {
   .navbar-nav .nav-item:has(.nav-cart-btn) {
     order: 99;
@@ -130,7 +136,7 @@ button {
 }
 
 .nav-cart-btn {
-  margin-left: 28px;
+  margin-left: 35px;
   padding: 10px 17px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
@@ -1326,9 +1332,22 @@ body.cart-is-open {
   }
 
   .hero-section {
+    position: relative;
+
     min-height: 650px;
 
-    text-align: center;
+    display: flex;
+    align-items: center;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.88),
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.75)
+      ),
+      url("./ChatGPT\ Image\ Aug\ 18\,\ 2026\,\ 06_12_13\ PM.png") center /
+        cover no-repeat;
   }
 
   .hero-content {
